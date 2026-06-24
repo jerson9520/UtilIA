@@ -1,0 +1,35 @@
+services:
+  db:
+    image: postgres:16
+    container_name: cda_ia_normativa_db
+    environment:
+      POSTGRES_DB: cda_ia_normativa
+      POSTGRES_USER: cda_user
+      POSTGRES_PASSWORD: cda_password
+    ports:
+      - "5434:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: cda_ia_normativa_backend
+    ports:
+      - "8010:8000"
+    volumes:
+      - ./backend:/app
+    environment:
+      DB_NAME: cda_ia_normativa
+      DB_USER: cda_user
+      DB_PASSWORD: cda_password
+      DB_HOST: db
+      DB_PORT: 5432
+    depends_on:
+      - db
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

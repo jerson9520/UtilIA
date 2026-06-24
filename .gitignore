@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.log
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Django
+*.sqlite3
+db.sqlite3
+media/
+staticfiles/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Docker / local volumes
+postgres_data/
+docker-data/
+*.pid
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data sensible / pesada
+backend/core/data/raw/*
+backend/core/data/processed/*
+backend/core/data/normatividad/*
+
+# Mantener carpetas vacías en Git
+!backend/core/data/raw/.gitkeep
+!backend/core/data/processed/.gitkeep
+!backend/core/data/normatividad/.gitkeep

@@ -1,0 +1,10 @@
+Django>=5.2,<6.0
+djangorestframework
+django-cors-headers
+python-dotenv
+psycopg2-binary
+pandas
+pyarrow
+scikit-learn
+joblib
+duckdb
