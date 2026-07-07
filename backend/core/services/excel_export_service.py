@@ -42,6 +42,8 @@ class ExcelExportService:
         ia_confianza = ia.get("confianza") or {}
         ia_rango = ia.get("rango_ideal") or {}
 
+        decision_ia = result.get("decision_ia") or {}
+
         rows = [
             ("Fuente", result.get("source")),
             ("Marca solicitada", filters.get("marca")),
@@ -76,6 +78,15 @@ class ExcelExportService:
             ("Método IA", ia.get("metodo")),
             ("Criterio IA", ia.get("criterio")),
             ("", ""),
+            ("DECISIÓN IA FINAL", ""),
+            ("Valor final IA", decision_ia.get("valor_final")),
+            ("Histórico IA", decision_ia.get("historico")),
+            ("CatBoost IA", decision_ia.get("catboost")),
+            ("Diferencia IA", decision_ia.get("diferencia")),
+            ("Método decisión", decision_ia.get("metodo")),
+            ("Peso histórico", decision_ia.get("peso_historico")),
+            ("Peso CatBoost", decision_ia.get("peso_catboost")),
+            ("Interpretación decisión", decision_ia.get("interpretacion")),
             ("Cantidad real", reales.get("cantidad")),
             ("Min real", reales.get("min")),
             ("Max real", reales.get("max")),
@@ -107,7 +118,7 @@ class ExcelExportService:
             if label:
                 label_cell.font = Font(bold=True)
 
-            if label == "CRITERIO IA":
+            if label in ["CRITERIO IA", "DECISIÓN IA FINAL"]:
                 label_cell.fill = PatternFill("solid", fgColor="006100")
                 label_cell.font = Font(bold=True, color="FFFFFF")
                 value_cell.fill = PatternFill("solid", fgColor="006100")
@@ -119,12 +130,21 @@ class ExcelExportService:
                 "Confianza IA",
                 "Score IA",
                 "Estrellas",
+                "Valor final IA",
+                "Histórico IA",
+                "CatBoost IA",
+                "Diferencia IA",
+                "Peso histórico",
+                "Peso CatBoost",
             ]:
                 label_cell.fill = PatternFill("solid", fgColor="E2F0D9")
                 value_cell.fill = PatternFill("solid", fgColor="E2F0D9")
 
             if label == "Valor objetivo IA":
                 value_cell.font = Font(bold=True, size=14, color="006100")
+
+            if label in ["Valor objetivo IA", "Valor final IA"]:
+                value_cell.font = Font(bold=True, size=14, color="006100")    
 
             if label == "Score IA" and value_cell.value is not None:
                 value_cell.value = f"{value_cell.value} / 100"

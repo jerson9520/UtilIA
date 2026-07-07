@@ -1,0 +1,31 @@
+{
+    "model": "/app/core/data/models/ia_valor_medicion_catboost.cbm",
+    "target": "valor_medicion",
+    "features": [
+        "marca",
+        "linea",
+        "anio_modelo",
+        "codigo_historico",
+        "valor_norma",
+        "tipo_linea",
+        "tipo_servicio",
+        "tipo_combustible",
+        "peso_bruto"
+    ],
+    "cat_features": [
+        "marca",
+        "linea",
+        "codigo_historico",
+        "tipo_linea",
+        "tipo_servicio",
+        "tipo_combustible"
+    ],
+    "rows_total_training": 7380667,
+    "rows_train": 5904533,
+    "rows_test": 1476134,
+    "metrics": {
+        "mae": 10.909030624553084,
+        "mse": 1267.18256560133,
+        "r2": 0.9858534794401034
+    }
+}

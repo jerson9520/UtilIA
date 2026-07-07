@@ -6,6 +6,8 @@ from core.views import (
     base_historical,
     smart_base_historical,
     export_base_historical_excel,
+    predict_ai_value,
+    analyze_package,
 )
 
 urlpatterns = [
@@ -16,4 +18,6 @@ urlpatterns = [
     path("historico/base/", base_historical, name="base_historical"),
     path("historico/smart-base/", smart_base_historical, name="smart_base_historical"),
     path("historico/base/export-excel/", export_base_historical_excel, name="export_base_historical_excel"),
+    path("ia/predict/", predict_ai_value, name="predict_ai_value"),
+    path("ia/evaluar-paquete/", analyze_package, name="analyze_package"),
 ]
