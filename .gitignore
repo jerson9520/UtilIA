@@ -45,3 +45,6 @@ backend/core/data/normatividad/*
 !backend/core/data/normatividad/.gitkeep
 # Modelos entrenados de IA
 backend/core/data/models/*.cbm
+
+# Archivos temporales generados por CatBoost
+backend/catboost_info/
